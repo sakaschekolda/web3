@@ -108,40 +108,7 @@
     box-shadow: inset 2px 2px 6px rgba(0, 0, 0, 0.2);
   }
   
-  @media (max-width: 768px) {
-    .header {
-      background-color: #ffeb3b; /* Pale yellow */
-      padding: 10px;
-      box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
-      margin-bottom: 20px;
-      width: 100%;
-      display: flex;
-      position: fixed;
-    }
 
-    .header-burger-btn {
-      display: block; /* Show burger button on mobile */
-    }
-  
-    .navigation {
-      display: none; /* Hide navigation links */
-    }
-  
-    .header.open .navigation {
-      display: flex; /* Show navigation links when open */
-      flex-direction: column; /* Stack them vertically */
-      background-color: #ffeb3b; /* Background to match header */
-      position: absolute;
-      width: 100%; /* Full width */
-      z-index: 1; /* Position above other elements */
-      top: 60px; /* Positioning below the header */
-    }
-  
-    .navigation-item {
-      text-align: center; /* Center text for mobile */
-      padding: 10px 0; /* Add some padding */
-    }
-  }
   
   /* Стили для контента страницы */
   .main-content {
@@ -161,6 +128,7 @@
   
   .button {
     background-color: #ffec66;
+    margin-right: 1%;
     padding: 12px 20px;
     font-size: 1rem;
     border-radius: 6px;
@@ -314,6 +282,56 @@
       width: 100%;
       box-shadow: 0 8px 15px rgba(0, 0, 0, 0.1);
     }
+    }
+
+    @media (max-width: 768px) {
+      .header {
+        background-color: #ffeb3b; /* Pale yellow */
+        padding: 10px;
+        box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+        margin-bottom: 20px;
+        width: 100%;
+        display: flex;
+        position: fixed;
+      }
+  
+      .header-burger-btn {
+        display: block; /* Show burger button on mobile */
+        cursor: pointer; /* Pointer cursor for better UX */
+        display: block;
+        margin-right: 1%;
+    }
+    
+      .navigation {
+        display: flex; /* Use Flexbox layout */
+        flex-direction: column; /* Stack items vertically */
+        background-color: #ffeb3b; /* Background color */
+        position: absolute; /* Position absolutely within the header */
+        width: 100%; /* Full width */
+        height: 100vh; /* Full height */
+        left: 0; /* Align to the left */
+        top: 0; /* Align to the top */
+        opacity: 0; /* Start transparent */
+        transform: translateY(-20px); /* Slide up initially */
+        transition: opacity 0.3s ease, transform 0.3s ease; /* Transitions for entering and exiting */
+        pointer-events: none;; /* No interaction when hidden */
+    }
+  
+    .navigation-list {
+      flex-direction: column;
+    }
+      
+    .header.open .navigation {
+      opacity: 1; /* Fully visible when open */
+      transform: translateY(0); /* Slide down to original position */
+      pointer-events: auto; /* Enable interaction when open */
+      flex-direction: column;
+    }
+    
+      .navigation-item {
+        text-align: center; /* Center text for mobile */
+        padding: 10px 0; /* Add some padding */
+      }
     }
   
   @media (max-width: 426px) { /* Media Query for mobile sizes */
